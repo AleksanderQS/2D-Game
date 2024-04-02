@@ -83,7 +83,7 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 	
 	public void initFrame() 
 	{
-		frame = new JFrame("2D Game");
+		frame = new JFrame("World Monsters");
 		frame.add(this);
 		frame.setResizable(false);
 		frame.pack();

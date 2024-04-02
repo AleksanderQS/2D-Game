@@ -60,7 +60,7 @@ public class Menu
 		g.fillRect(0, 0, Game.WIDTH * Game.SCALE, Game.HEIGHT * Game.SCALE);
 		g.setColor(Color.orange);
 		g.setFont(new Font("arial", Font.BOLD, 36*2));
-		g.drawString("Brazil monsters", (Game.WIDTH * Game.SCALE) / 2 - 220, (Game.HEIGHT * Game.SCALE) / 2 - 390);
+		g.drawString("World monsters", (Game.WIDTH * Game.SCALE) / 2 - 220, (Game.HEIGHT * Game.SCALE) / 2 - 390);
 		
 		// Menu options
 		g.setColor(Color.white);

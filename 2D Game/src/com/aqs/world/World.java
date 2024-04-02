@@ -114,16 +114,18 @@ public class World
 	}
 	
 	public void render(Graphics g) {
-	    int xstart = Math.max(0, Camera.x / 64);
-	    int ystart = Math.max(0, Camera.y / 64);
+	    int xstart = Math.max(0, Camera.x / TILE_SIZE);
+	    int ystart = Math.max(0, Camera.y / TILE_SIZE);
 	    
-	    int xfinal = Math.min(WIDTH - 1, xstart + (Game.WIDTH / 64)) + 2;
-	    int yfinal = Math.min(HEIGHT - 1, ystart + (Game.HEIGHT / 64)) + 2;
+	    int xfinal = Math.min(WIDTH - 1, (Camera.x + Game.WIDTH) / TILE_SIZE);
+	    int yfinal = Math.min(HEIGHT - 1, (Camera.y + Game.HEIGHT) / TILE_SIZE);
 	    
 	    for(int xx = xstart; xx <= xfinal; xx++) {
 	        for(int yy = ystart; yy <= yfinal; yy++) {
-	            Tile tile = tiles[xx + (yy * WIDTH)];
-	            tile.render(g);
+	            if (xx + yy * WIDTH < tiles.length && xx + yy * WIDTH >= 0) {
+	                Tile tile = tiles[xx + yy * WIDTH];
+	                tile.render(g);
+	            }
 	        }
 	    }
 	}
