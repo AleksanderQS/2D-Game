@@ -9,6 +9,7 @@ public class Sound
 	
 	public static final Sound musicBackground = new Sound("/music.wav");
 	public static final Sound hurtSound = new Sound("/hurt.wav");
+	public static final Sound shotSound = new Sound("/shot.wav");
 	
 	private Sound (String name) 
 	{
@@ -36,9 +37,16 @@ public class Sound
 	
 	public void loop() 
 	{
-		try {
-			
-		} catch (Exception e) {
+		try 
+		{
+			new Thread() 
+			{
+				public void run() 
+				{
+					clip.loop();
+				}
+			}.start();
 		}
+		catch (Throwable e){} 
 	}
 }

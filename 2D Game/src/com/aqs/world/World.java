@@ -52,10 +52,17 @@ public class World
 					}
 					else if(curPixel == 0xFFFF0000)
 					{
-						// Enemy | Red
-						Enemy en = new Enemy(xx * 64, yy * 64, 64, 64, Entity.ENEMY_EN);
+						// MULA | Red
+						Mula en = new Mula(xx * 64, yy * 64, 64, 64, Entity.MULA);
 						Game.entities.add(en);
-						Game.enemies.add(en);
+						Game.mula.add(en);
+					}
+					else if(curPixel == 0xFFE10000)
+					{
+						// CURUPIRA | DarkRed
+						Curupira en = new Curupira(xx * 64, yy * 64, 64, 64, Entity.CURUPIRA);
+						Game.entities.add(en);
+						Game.curupira.add(en);
 					}
 					else if(curPixel == 0xFFFF6A00) 
 					{
@@ -105,7 +112,8 @@ public class World
 	public static void restartGame(String level) 
 	{
 		Game.entities = new ArrayList<Entity>();
-		Game.enemies = new ArrayList<Enemy>();
+		Game.mula = new ArrayList<Mula>();
+		Game.curupira = new ArrayList<Curupira>();
 		Game.spritesheet = new Spritesheet("/spritesheet.png");
 		Game.player = new Player(0, 0, 64, 64, Game.spritesheet.getSprite(0, 0, 64, 64));
 		Game.entities.add(Game.player);

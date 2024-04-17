@@ -3,6 +3,7 @@ package com.aqs.entities;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import com.aqs.main.Game;
+import com.aqs.main.Sound;
 import com.aqs.world.Camera;
 import com.aqs.world.World;
 
@@ -24,6 +25,8 @@ public class Player extends Entity
 	private boolean gun = false;
 	
 	public int ammo = 0;
+	private long lastShootTime = 0;
+	private final long shootCooldown = 1800;
 	
 	public boolean shoot = false, mouseShoot = false;
 	
@@ -103,7 +106,7 @@ public class Player extends Entity
 			}
 		}
 		
-		if(shoot) 
+		if(shoot && System.currentTimeMillis() - lastShootTime > shootCooldown) 
 		{
 			shoot = false;
 			int dx = 0;
@@ -121,19 +124,23 @@ public class Player extends Entity
 			}
 			if(gun && ammo > 0) 
 			{
+				Sound.shotSound.play();
 				ammo--;
 				
 				Bullet bullet = new Bullet(this.getX() + px, this.getY() + py, 3, 3, null, dx, 0);
 				Game.bullets.add(bullet);
+				
+				lastShootTime = System.currentTimeMillis();
 			}
 		}
 		
-		if(mouseShoot) 
+		if(mouseShoot && System.currentTimeMillis() - lastShootTime > shootCooldown) 
 		{
 			mouseShoot = false;
 			
 			if(gun && ammo > 0) 
 			{
+				Sound.shotSound.play();
 				ammo--;
 
 				int px = 0;
@@ -156,6 +163,8 @@ public class Player extends Entity
 				
 				Bullet bullet = new Bullet(this.getX() + px, this.getY() + py, 3, 3, null, dx, dy);
 				Game.bullets.add(bullet);
+				
+				lastShootTime = System.currentTimeMillis();
 			}
 		}
 		
@@ -199,7 +208,7 @@ public class Player extends Entity
 			{
 				if(Entity.isColliding(this, e))
 				{
-					ammo += 10;
+					ammo += 25;
 					if (life > maxLife) 
 						life = maxLife;
 					Game.entities.remove(i);

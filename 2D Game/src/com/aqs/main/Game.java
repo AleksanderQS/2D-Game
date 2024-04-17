@@ -19,7 +19,8 @@ import java.util.Random;
 import javax.swing.JFrame;
 
 import com.aqs.entities.Bullet;
-import com.aqs.entities.Enemy;
+import com.aqs.entities.Curupira;
+import com.aqs.entities.Mula;
 import com.aqs.entities.Entity;
 import com.aqs.entities.Player;
 import com.aqs.graphics.Spritesheet;
@@ -40,7 +41,8 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 	private BufferedImage image;
 	
 	public static List<Entity> entities;
-	public static List<Enemy> enemies;
+	public static List<Mula> mula;
+	public static List<Curupira> curupira;
 	public static List<Bullet> bullets;
 	public static Spritesheet spritesheet;
 	
@@ -70,7 +72,8 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 		ui = new UI();
 		image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
 		entities = new ArrayList<Entity>();
-		enemies = new ArrayList<Enemy>();
+		mula = new ArrayList<Mula>();
+		curupira = new ArrayList<Curupira>();
 		bullets = new ArrayList<Bullet>();
 		
 		spritesheet = new Spritesheet("/spritesheet.png");
@@ -135,7 +138,7 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 				bullets.get(i).tick();
 			}
 			
-			if(enemies.size() == 0) 
+			if(mula.size() + curupira.size() == 0) 
 			{
 				CUR_LEVEL++;
 				if(CUR_LEVEL > MAX_LEVEL) 

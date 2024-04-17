@@ -12,10 +12,12 @@ public class Entity
 	public static BufferedImage LIFEPACK_EN = Game.spritesheet.getSprite(5*64, 0, 64, 64);
 	public static BufferedImage WEAPON_EN = Game.spritesheet.getSprite(6*64, 0, 64, 64);
 	public static BufferedImage BULLET_EN = Game.spritesheet.getSprite(5*64, 64, 64, 64);
-	public static BufferedImage ENEMY_EN = Game.spritesheet.getSprite(6*64, 64, 64, 64);
-	public static BufferedImage ENEMY_FEEDBACK = Game.spritesheet.getSprite(6*64, 128, 64, 64);
+	public static BufferedImage MULA = Game.spritesheet.getSprite(6*64, 64, 64, 64);
+	public static BufferedImage MULA_FEEDBACK = Game.spritesheet.getSprite(6*64, 128, 64, 64);
 	public static BufferedImage GUN_LEFT = Game.spritesheet.getSprite(7*64, 0, 64, 64);
 	public static BufferedImage GUN_RIGHT = Game.spritesheet.getSprite(6*64, 0, 64, 64);
+	public static BufferedImage CURUPIRA = Game.spritesheet.getSprite(3*64, 0, 64, 64);
+	
 	
 	protected double x, y;
 	protected int width, height;

@@ -8,7 +8,7 @@ import com.aqs.main.Sound;
 import com.aqs.world.Camera;
 import com.aqs.world.World;
 
-public class Enemy extends Entity
+public class Mula extends Entity
 {
 	private double speed = 1.8;
 	
@@ -23,7 +23,7 @@ public class Enemy extends Entity
 	private boolean isDamaged = false;
 	private int damageFrames = 5, damageCurrent = 0;
 
-	public Enemy(int x, int y, int width, int height, BufferedImage sprite) 
+	public Mula(int x, int y, int width, int height, BufferedImage sprite) 
 	{
 		super(x, y, width, height, null);
 		sprites = new BufferedImage[2];
@@ -97,7 +97,7 @@ public class Enemy extends Entity
 	
 	public void destroySelf() 
 	{
-		Game.enemies.remove(this);
+		Game.mula.remove(this);
 		Game.entities.remove(this);
 	}
 		
@@ -128,9 +128,9 @@ public class Enemy extends Entity
 	public boolean isColliding(int xnext, int ynext) 
 	{
 		Rectangle enemyCurrent = new Rectangle(xnext + maskx, ynext + masky, maskw, maskh);
-		for(int i = 0; i < Game.enemies.size(); i++) 
+		for(int i = 0; i < Game.mula.size(); i++) 
 		{
-			Enemy e = Game.enemies.get(i);
+			Mula e = Game.mula.get(i);
 			if(e == this)
 				continue;
 			Rectangle targetEnemy = new Rectangle(e.getX() + maskx, e.getY() + masky, maskw, maskh);
@@ -149,7 +149,7 @@ public class Enemy extends Entity
 		}
 		else
 		{
-			g.drawImage(Entity.ENEMY_FEEDBACK, this.getX() - Camera.x, this.getY() - Camera.y, null);
+			g.drawImage(Entity.MULA_FEEDBACK, this.getX() - Camera.x, this.getY() - Camera.y, null);
 		}
 		// g.setColor(Color.blue);
 		// g.fillRect(this.getX() + maskx - Camera.x, this.getY() + masky - Camera.y, maskw, maskh);
